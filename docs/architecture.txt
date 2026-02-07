@@ -117,7 +117,7 @@ Technology Stack
 • TypeScript 5.3.3 - Type Safety
 • Tailwind CSS 3.4.0 - Styling
 • Vite 5.0.10 - Build Tool
-• better-sqlite3 11.7.0 - Database
+• sql.js 1.11.0 - Pure JavaScript SQLite Database (zero native dependencies)
 
 Key Features
 ============

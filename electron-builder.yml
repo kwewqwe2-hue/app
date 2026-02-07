@@ -5,6 +5,7 @@ directories:
 files:
   - dist/**/*
   - package.json
+  - node_modules/sql.js/dist/*.wasm
 mac:
   target: dmg
   icon: build/icon.png

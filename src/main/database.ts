@@ -19,7 +19,10 @@ export class FocusDatabase {
   }
 
   async initialize(): Promise<void> {
-    const SQL = await initSqlJs();
+    const SQL = await initSqlJs({
+      // Point to the wasm file in node_modules
+      locateFile: (file) => path.join(__dirname, '../../node_modules/sql.js/dist', file)
+    });
     
     // 尝试从文件加载现有数据库
     try {

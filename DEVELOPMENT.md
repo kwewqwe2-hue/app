@@ -38,7 +38,7 @@ FocusZone 是一款基于 Electron + React + Tailwind CSS 开发的跨平台桌�
 - ✅ TypeScript 5.3.3（类型安全）
 - ✅ Tailwind CSS 3.4.0（样式框架）
 - ✅ Vite 5.0.10（构建工具）
-- ✅ better-sqlite3 11.7.0（数据库）
+- ✅ sql.js 1.11.0（纯 JavaScript SQLite 数据库，零原生依赖）
 
 ## 项目结构
 
@@ -158,9 +158,10 @@ electronAPI.quitApp()
 
 ## 已解决的技术问题
 
-1. **better-sqlite3 编译问题**
-   - 问题：Node.js 24.x 与 better-sqlite3 9.x 不兼容
-   - 解决：降级到 Electron 27（Node.js 20.x）+ better-sqlite3 11.7.0
+1. **数据库实现**
+   - 使用 sql.js（纯 JavaScript 实现的 SQLite）
+   - 无需任何 C++ 编译工具或 Visual Studio
+   - 兼容 Node.js 18+ 和 24+
 
 2. **TypeScript 类型冲突**
    - 问题：Electron App 接口扩展导致重复定义
