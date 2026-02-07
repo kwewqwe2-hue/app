@@ -46,9 +46,10 @@ function createWindow() {
 }
 
 // 应用程序准备就绪
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // 初始化数据库
   db = new FocusDatabase();
+  await db.initialize();
   
   // 创建主窗口
   createWindow();
@@ -66,6 +67,9 @@ app.whenReady().then(() => {
 // 所有窗口关闭时退出应用（Windows & Linux）
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    if (db) {
+      db.close();
+    }
     app.quit();
   }
 });
@@ -120,5 +124,8 @@ ipcMain.on('update-tray-status', (event, status: 'idle' | 'focusing', todayMinut
 // 退出应用
 ipcMain.on('app-quit', () => {
   app.isQuitting = true;
+  if (db) {
+    db.close();
+  }
   app.quit();
 });

@@ -25,8 +25,8 @@
   "author": "FocusZone Team",
   "license": "MIT",
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.8",
     "@types/node": "^20.10.6",
+    "@types/sql.js": "^1.4.9",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
@@ -42,9 +42,9 @@
     "wait-on": "^7.2.0"
   },
   "dependencies": {
-    "better-sqlite3": "^11.7.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sql.js": "^1.11.0"
   },
   "build": {
     "appId": "com.focuszone.app",
