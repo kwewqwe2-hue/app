@@ -1,10 +1,11 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import { createTray, updateTrayStatus } from './tray';
-import { Database, getFocusSessionStats, saveFocusSession } from './database';
+import { FocusDatabase, getFocusSessionStats, saveFocusSession } from './database';
+import './types';
 
 let mainWindow: BrowserWindow | null = null;
-let db: Database | null = null;
+let db: FocusDatabase | null = null;
 
 // 创建主窗口
 function createWindow() {
@@ -47,7 +48,7 @@ function createWindow() {
 // 应用程序准备就绪
 app.whenReady().then(() => {
   // 初始化数据库
-  db = new Database();
+  db = new FocusDatabase();
   
   // 创建主窗口
   createWindow();

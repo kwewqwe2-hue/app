@@ -2,16 +2,14 @@ import DatabaseConstructor from 'better-sqlite3';
 import * as path from 'path';
 import { app } from 'electron';
 
-export type Database = DatabaseConstructor.Database;
-
 // 获取数据库路径（用户文档目录）
 function getDatabasePath(): string {
   const userDataPath = app.getPath('userData');
   return path.join(userDataPath, 'focuszone.db');
 }
 
-// 初始化数据库
-export class Database {
+// 数据库包装类
+export class FocusDatabase {
   private db: DatabaseConstructor.Database;
 
   constructor() {
@@ -39,7 +37,7 @@ export class Database {
 }
 
 // 保存专注会话
-export function saveFocusSession(db: Database, duration: number, targetMinutes: number) {
+export function saveFocusSession(db: FocusDatabase, duration: number, targetMinutes: number) {
   const stmt = db.getDb().prepare(`
     INSERT INTO focus_sessions (duration, target_minutes)
     VALUES (?, ?)
@@ -49,7 +47,7 @@ export function saveFocusSession(db: Database, duration: number, targetMinutes: 
 }
 
 // 获取今日专注统计
-export function getFocusSessionStats(db: Database): { totalMinutes: number; sessionCount: number } {
+export function getFocusSessionStats(db: FocusDatabase): { totalMinutes: number; sessionCount: number } {
   const today = new Date().toISOString().split('T')[0];
   
   const result = db.getDb().prepare(`
@@ -67,7 +65,7 @@ export function getFocusSessionStats(db: Database): { totalMinutes: number; sess
 }
 
 // 获取历史会话列表
-export function getFocusSessions(db: Database, limit: number = 100) {
+export function getFocusSessions(db: FocusDatabase, limit: number = 100) {
   return db.getDb().prepare(`
     SELECT 
       id,

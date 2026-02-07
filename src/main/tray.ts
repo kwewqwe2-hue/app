@@ -1,11 +1,12 @@
-import { app, Tray, Menu, BrowserWindow, nativeImage } from 'electron';
+import { app, Tray, Menu, BrowserWindow, nativeImage, NativeImage } from 'electron';
 import * as path from 'path';
+import './types';
 
 let tray: Tray | null = null;
 let mainWindow: BrowserWindow | null = null;
 
 // 创建系统托盘图标（简单的圆形图标）
-function createTrayIcon(color: string = '#5E9BFF'): nativeImage {
+function createTrayIcon(color: string = '#5E9BFF'): NativeImage {
   const size = 16;
   const canvas = `
     <svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
