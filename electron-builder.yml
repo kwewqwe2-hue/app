@@ -6,6 +6,9 @@ files:
   - dist/**/*
   - package.json
   - node_modules/sql.js/dist/*.wasm
+  - node_modules/sql.js/dist/*.js
+asarUnpack:
+  - node_modules/sql.js/**/*
 mac:
   target: dmg
   icon: build/icon.png

@@ -19,9 +19,15 @@ export class FocusDatabase {
   }
 
   async initialize(): Promise<void> {
+    // Get the correct path to sql.js WASM files
+    // In development: node_modules is relative to dist/main
+    // In production: node_modules is packaged alongside the app
+    const wasmPath = app.isPackaged
+      ? path.join(process.resourcesPath, 'app.asar.unpacked/node_modules/sql.js/dist')
+      : path.join(__dirname, '../../node_modules/sql.js/dist');
+    
     const SQL = await initSqlJs({
-      // Point to the wasm file in node_modules
-      locateFile: (file) => path.join(__dirname, '../../node_modules/sql.js/dist', file)
+      locateFile: (file) => path.join(wasmPath, file)
     });
     
     // 尝试从文件加载现有数据库
@@ -72,9 +78,20 @@ export class FocusDatabase {
 
   close() {
     if (this.db) {
-      this.save();
-      this.db.close();
-      this.db = null;
+      try {
+        this.save();
+        this.db.close();
+      } catch (error) {
+        console.error('Failed to close database:', error);
+        // Still try to close even if save failed
+        try {
+          this.db.close();
+        } catch (closeError) {
+          console.error('Failed to close database connection:', closeError);
+        }
+      } finally {
+        this.db = null;
+      }
     }
   }
 }
