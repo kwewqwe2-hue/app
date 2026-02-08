@@ -1,6 +1,7 @@
 /**
  * FocusZone 主页
  * 使用 Tab + 自定义组件 实现底部导航
+ * 顺序: 工具箱 → 计划 → 成长 → 记录 → 日历 → 专注
  */
 import { FocusTimerTab } from '../components/FocusTimerTab'
 import { PlansTab } from '../components/PlansTab'
@@ -13,21 +14,21 @@ import curves from '@ohos.curves'
 @Entry
 @Component
 struct Index {
-  @State currentIndex: number = 0
+  @State currentIndex: number = 5
   @State tabBarOpacity: number = 0
   @State tabBarTranslateY: number = 60
   // 刷新计数器：每次从二级页面返回时 +1，通知子组件刷新数据
   @State @Watch('onRefreshChange') refreshCounter: number = 0
   @Provide('refreshCounter') refreshProvide: number = 0
 
-  // Tab 项配置
+  // Tab 项配置（新顺序：工具箱 → 计划 → 成长 → 记录 → 日历 → 专注）
   private tabItems: TabItemInfo[] = [
-    { title: '专注', icon: '⏱' },
+    { title: '工具箱', icon: '🧰' },
     { title: '计划', icon: '📋' },
+    { title: '成长', icon: '🌱' },
+    { title: '记录', icon: '📝' },
     { title: '日历', icon: '📅' },
-    { title: '笔记', icon: '📝' },
-    { title: '成长', icon: '🌳' },
-    { title: '工具箱', icon: '🧰' }
+    { title: '专注', icon: '⏱' }
   ]
 
   aboutToAppear(): void {
@@ -73,39 +74,39 @@ struct Index {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.End, index: this.currentIndex }) {
-        // Tab 1: 专注计时器
+        // Tab 1: 工具箱
         TabContent() {
-          FocusTimerTab()
+          ToolboxTab()
         }
         .tabBar(this.tabBuilder(0))
 
-        // Tab 2: 计划与目标
+        // Tab 2: 计划
         TabContent() {
           PlansTab()
         }
         .tabBar(this.tabBuilder(1))
 
-        // Tab 3: 专注日历
+        // Tab 3: 成长
         TabContent() {
-          CalendarTab()
+          GrowthTab()
         }
         .tabBar(this.tabBuilder(2))
 
-        // Tab 4: 智能记录本
+        // Tab 4: 记录（笔记）
         TabContent() {
           NotebookTab()
         }
         .tabBar(this.tabBuilder(3))
 
-        // Tab 5: 成长系统
+        // Tab 5: 日历
         TabContent() {
-          GrowthTab()
+          CalendarTab()
         }
         .tabBar(this.tabBuilder(4))
 
-        // Tab 6: 工具箱
+        // Tab 6: 专注（默认打开此Tab）
         TabContent() {
-          ToolboxTab()
+          FocusTimerTab()
         }
         .tabBar(this.tabBuilder(5))
       }
