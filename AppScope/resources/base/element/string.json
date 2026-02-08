@@ -1,0 +1,12 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "FocusZone"
+    },
+    {
+      "name": "app_desc",
+      "value": "FocusZone - 专注力管理与激励工具，集番茄时钟、习惯追踪、进度可视化、游戏化激励和轻量笔记于一体"
+    }
+  ]
+}

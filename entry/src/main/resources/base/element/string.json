@@ -1,0 +1,36 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "FocusZone 主模块"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "FocusZone 专注力管理"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "FocusZone"
+    },
+    {
+      "name": "tab_timer",
+      "value": "专注"
+    },
+    {
+      "name": "tab_plans",
+      "value": "计划"
+    },
+    {
+      "name": "tab_calendar",
+      "value": "日历"
+    },
+    {
+      "name": "tab_notebook",
+      "value": "笔记"
+    },
+    {
+      "name": "tab_growth",
+      "value": "成长"
+    }
+  ]
+}
