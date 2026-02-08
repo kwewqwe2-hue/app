@@ -122,6 +122,7 @@ struct PlanCreatePage {
               .fontSize(15)
               .backgroundColor($r('app.color.bg_surface'))
               .borderRadius(12)
+              .onChange((value: string) => { this.formName = value })
           }
           .width('100%')
           .margin({ bottom: 20 })

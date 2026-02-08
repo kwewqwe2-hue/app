@@ -136,14 +136,14 @@ export struct FocusTimerTab {
     }
 
     let durationMinutes = this.elapsedSeconds / 60
-    if (durationMinutes < 1) {
-      // 不足1分钟不记录
+    if (this.elapsedSeconds < 3) {
+      // 不足3秒不记录（防误触）
       this.isRunning = false
       this.isPaused = false
       return
     }
 
-    let points = PointsCalculator.calculatePoints(durationMinutes)
+    let points = Math.max(1, PointsCalculator.calculatePoints(durationMinutes))
     let rank = PointsCalculator.getPointsRank(points)
 
     // 保存会话

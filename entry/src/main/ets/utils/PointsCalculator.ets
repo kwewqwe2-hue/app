@@ -22,7 +22,10 @@ export class PointsCalculator {
 
     let points = 0
 
-    if (minutes <= 25) {
+    // 不足1分钟：保底1分，鼓励每一次尝试
+    if (minutes < 1) {
+      points = Math.max(1, minutes * 2)
+    } else if (minutes <= 25) {
       points = minutes * 1.2
     } else if (minutes <= 50) {
       points = 25 * 1.2 + (minutes - 25) * 1.0
