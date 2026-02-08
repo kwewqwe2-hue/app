@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusZone Application Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #5E9BFF;
+            text-align: center;
+        }
+        .preview {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .info h2 {
+            color: #374151;
+            margin-top: 0;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .feature {
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #5E9BFF;
+        }
+        .feature strong {
+            color: #5E9BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 FocusZone - 专注时间管理应用</h1>
+        <div class="preview">
+            <img src="app-screenshot.svg" alt="FocusZone Application" width="360" height="640">
+        </div>
+        
+        <div class="info">
+            <h2>主要功能特性</h2>
+            <div class="features">
+                <div class="feature">
+                    <strong>🕐 番茄计时器</strong><br>
+                    支持 15/25/45/60 分钟预设和自定义时长
+                </div>
+                <div class="feature">
+                    <strong>📊 今日统计</strong><br>
+                    自动记录和统计每日专注时长
+                </div>
+                <div class="feature">
+                    <strong>💾 本地存储</strong><br>
+                    使用 SQLite 持久化专注记录
+                </div>
+                <div class="feature">
+                    <strong>🎨 优雅界面</strong><br>
+                    Tailwind CSS 美化，圆角设计风格
+                </div>
+                <div class="feature">
+                    <strong>📱 系统托盘</strong><br>
+                    最小化到托盘，随时查看状态
+                </div>
+                <div class="feature">
+                    <strong>🔔 桌面通知</strong><br>
+                    完成专注时自动提醒
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h2>技术栈</h2>
+            <ul>
+                <li><strong>Electron 27</strong> - 跨平台桌面应用框架</li>
+                <li><strong>React 18</strong> - 前端 UI 框架</li>
+                <li><strong>TypeScript 5</strong> - 类型安全的 JavaScript</li>
+                <li><strong>Tailwind CSS 3</strong> - 实用优先的 CSS 框架</li>
+                <li><strong>Vite 5</strong> - 快速的前端构建工具</li>
+                <li><strong>better-sqlite3</strong> - 高性能 SQLite 数据库</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
