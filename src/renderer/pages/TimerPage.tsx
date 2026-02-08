@@ -7,17 +7,23 @@ const TimerPage: React.FC = () => {
   const [targetMinutes, setTargetMinutes] = useState<number>(25);
   const [timeLeft, setTimeLeft] = useState<number>(25 * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false); // 区分"未开始"和"已暂停"
   const [todayMinutes, setTodayMinutes] = useState<number>(0);
   const [sessionCount, setSessionCount] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const startTimeRef = useRef<number>(0);
+  const todayMinutesRef = useRef<number>(0); // 用 ref 跟踪以避免 effect 依赖
+
+  // 同步 todayMinutes 到 ref
+  useEffect(() => {
+    todayMinutesRef.current = todayMinutes;
+  }, [todayMinutes]);
 
   // 加载今日统计
   useEffect(() => {
     loadTodayStats();
   }, []);
 
-  // 定时器逻辑
+  // 定时器逻辑 - 仅依赖 isRunning，避免 todayMinutes 导致不必要的重建
   useEffect(() => {
     if (isRunning) {
       intervalRef.current = setInterval(() => {
@@ -31,7 +37,7 @@ const TimerPage: React.FC = () => {
       }, 1000);
 
       // 更新托盘状态
-      window.electronAPI?.updateTrayStatus('focusing', todayMinutes);
+      window.electronAPI?.updateTrayStatus('focusing', todayMinutesRef.current);
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -39,7 +45,7 @@ const TimerPage: React.FC = () => {
       }
       
       // 更新托盘状态
-      window.electronAPI?.updateTrayStatus('idle', todayMinutes);
+      window.electronAPI?.updateTrayStatus('idle', todayMinutesRef.current);
     }
 
     return () => {
@@ -47,7 +53,7 @@ const TimerPage: React.FC = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isRunning, todayMinutes]);
+  }, [isRunning]);
 
   // 加载今日统计
   const loadTodayStats = async () => {
@@ -87,11 +93,18 @@ const TimerPage: React.FC = () => {
     }
   };
 
-  // 开始计时
+  // 开始/恢复计时
   const handleStart = () => {
-    setTimeLeft(targetMinutes * 60);
-    setIsRunning(true);
-    startTimeRef.current = Date.now();
+    if (isPaused) {
+      // 从暂停处恢复，不重置时间
+      setIsRunning(true);
+      setIsPaused(false);
+    } else {
+      // 全新开始，重置时间
+      setTimeLeft(targetMinutes * 60);
+      setIsRunning(true);
+      setIsPaused(false);
+    }
     
     // 请求通知权限
     if ('Notification' in window && Notification.permission === 'default') {
@@ -102,11 +115,13 @@ const TimerPage: React.FC = () => {
   // 暂停计时
   const handlePause = () => {
     setIsRunning(false);
+    setIsPaused(true);
   };
 
   // 重置/结束计时
   const handleReset = async () => {
     setIsRunning(false);
+    setIsPaused(false);
     
     // 计算已专注时长
     const totalSeconds = targetMinutes * 60 - timeLeft;
@@ -146,7 +161,7 @@ const TimerPage: React.FC = () => {
     <div className="flex flex-col h-full bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
       {/* 计时器显示 */}
       <div className="flex-1 flex flex-col justify-center">
-        <Timer timeLeft={timeLeft} isRunning={isRunning} />
+        <Timer timeLeft={timeLeft} targetMinutes={targetMinutes} isRunning={isRunning} />
         
         {/* 今日统计 */}
         <div className="text-center pb-6">
@@ -165,6 +180,7 @@ const TimerPage: React.FC = () => {
       {/* 控制面板 */}
       <ControlPanel
         isRunning={isRunning}
+        isPaused={isPaused}
         targetMinutes={targetMinutes}
         onStart={handleStart}
         onPause={handlePause}
