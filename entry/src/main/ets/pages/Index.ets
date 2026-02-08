@@ -7,7 +7,7 @@ import { PlansTab } from '../components/PlansTab'
 import { CalendarTab } from '../components/CalendarTab'
 import { NotebookTab } from '../components/NotebookTab'
 import { GrowthTab } from '../components/GrowthTab'
-import { SettingsTab } from '../components/SettingsTab'
+import { ToolboxTab } from '../components/ToolboxTab'
 import curves from '@ohos.curves'
 
 @Entry
@@ -27,7 +27,7 @@ struct Index {
     { title: '日历', icon: '📅' },
     { title: '笔记', icon: '📝' },
     { title: '成长', icon: '🌳' },
-    { title: '设置', icon: '⚙' }
+    { title: '工具箱', icon: '🧰' }
   ]
 
   aboutToAppear(): void {
@@ -103,9 +103,9 @@ struct Index {
         }
         .tabBar(this.tabBuilder(4))
 
-        // Tab 6: 设置
+        // Tab 6: 工具箱
         TabContent() {
-          SettingsTab()
+          ToolboxTab()
         }
         .tabBar(this.tabBuilder(5))
       }

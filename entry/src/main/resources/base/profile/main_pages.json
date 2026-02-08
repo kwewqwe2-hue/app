@@ -6,6 +6,14 @@
     "pages/NoteCreatePage",
     "pages/PlanCreatePage",
     "pages/KeywordAnalysisPage",
-    "pages/SettingsPage"
+    "pages/SettingsPage",
+    "pages/WhiteNoisePage",
+    "pages/BreathingPage",
+    "pages/PhoneDetoxPage",
+    "pages/FocusRatingPage",
+    "pages/FocusDiaryPage",
+    "pages/ChallengesPage",
+    "pages/FocusReportPage",
+    "pages/GoalTrackingPage"
   ]
 }
