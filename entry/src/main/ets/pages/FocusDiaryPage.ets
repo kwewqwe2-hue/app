@@ -5,6 +5,7 @@
 import router from '@ohos.router'
 import curves from '@ohos.curves'
 import { PreferencesUtil } from '../utils/PreferencesUtil'
+import { FocusNote } from '../model/DataModels'
 
 @Entry
 @Component
@@ -35,13 +36,13 @@ struct FocusDiaryPage {
   private async saveDiary(): Promise<void> {
     if (this.diaryContent.trim() === '') return
     let today = PreferencesUtil.getDateStr(new Date())
-    let diary = {
+    let diary: FocusNote = {
       id: PreferencesUtil.generateId(),
-      type: 'longterm' as 'longterm',
+      type: 'longterm',
       title: `📖 专注日记 ${today}`,
       content: `${this.mood !== '' ? '心情: ' + this.mood + '\n\n' : ''}${this.diaryContent}`,
       targetDate: 0,
-      status: 'completed' as 'completed',
+      status: 'completed',
       url: '',
       createdAt: Date.now(),
       updatedAt: Date.now()

@@ -5,6 +5,7 @@
 import router from '@ohos.router'
 import curves from '@ohos.curves'
 import { PreferencesUtil } from '../utils/PreferencesUtil'
+import { FocusNote } from '../model/DataModels'
 
 @Entry
 @Component
@@ -34,13 +35,13 @@ struct FocusRatingPage {
   }
 
   private async saveRating(): Promise<void> {
-    let ratingNote = {
+    let ratingNote: FocusNote = {
       id: PreferencesUtil.generateId(),
-      type: 'shortterm' as 'shortterm',
+      type: 'shortterm',
       title: `专注评分: ${'★'.repeat(this.rating)}${'☆'.repeat(5 - this.rating)}`,
       content: `评分: ${this.rating}/5\n${this.interruptReason !== '' ? '中断原因: ' + this.interruptReason + '\n' : ''}${this.notes !== '' ? '备注: ' + this.notes : ''}`,
       targetDate: 0,
-      status: 'completed' as 'completed',
+      status: 'completed',
       url: '',
       createdAt: Date.now(),
       updatedAt: Date.now()
