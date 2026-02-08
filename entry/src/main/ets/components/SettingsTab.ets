@@ -86,12 +86,11 @@ export struct SettingsTab {
     }, 550)
   }
 
-  // 切换深色模式
-  private toggleDarkMode(): void {
-    this.isDarkMode = !this.isDarkMode
+  // 切换深色模式（由 Toggle onChange 调用，isOn 已是最新值）
+  private applyColorMode(isDark: boolean): void {
     try {
       let context = getContext(this) as common.UIAbilityContext
-      if (this.isDarkMode) {
+      if (isDark) {
         context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK)
       } else {
         context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT)
@@ -151,7 +150,7 @@ export struct SettingsTab {
                 .switchPointColor(Color.White)
                 .onChange((isOn: boolean) => {
                   this.isDarkMode = isOn
-                  this.toggleDarkMode()
+                  this.applyColorMode(isOn)
                 })
             }
             .width('100%')
