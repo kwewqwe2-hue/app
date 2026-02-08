@@ -108,6 +108,16 @@ struct ProjectDetailPage {
     }
   }
 
+  private getProgressPercent(): number {
+    if (!this.project || this.project.totalGoalHours <= 0) return 0
+    return Math.min(100, Math.round(this.project.completedMinutes / (this.project.totalGoalHours * 60) * 100))
+  }
+
+  private getRemainingMinutes(): number {
+    if (!this.project) return 0
+    return Math.max(0, this.project.totalGoalHours * 60 - this.project.completedMinutes)
+  }
+
   private async toggleActive(): Promise<void> {
     if (this.project) {
       this.project.isActive = !this.project.isActive
@@ -139,9 +149,7 @@ struct ProjectDetailPage {
             .style({ strokeWidth: 14 })
 
           Column() {
-            let percent = Math.min(100,
-              Math.round(this.project.completedMinutes / (this.project.totalGoalHours * 60) * 100))
-            Text(`${percent}%`)
+            Text(`${this.getProgressPercent()}%`)
               .fontSize(32)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.primary_green'))
@@ -178,8 +186,7 @@ struct ProjectDetailPage {
           .layoutWeight(1)
 
           Column() {
-            let remaining = Math.max(0, this.project.totalGoalHours * 60 - this.project.completedMinutes)
-            Text(PreferencesUtil.formatDuration(remaining))
+            Text(PreferencesUtil.formatDuration(this.getRemainingMinutes()))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.accent_orange'))

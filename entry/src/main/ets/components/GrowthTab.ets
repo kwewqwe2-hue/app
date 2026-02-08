@@ -73,6 +73,23 @@ export struct GrowthTab {
     }, 550)
   }
 
+  private getNextStageName(): string {
+    return TreeStageInfo.getStageConfig(this.growth.treeStage + 1).name
+  }
+
+  private getNextStageMinPoints(): number {
+    return TreeStageInfo.getStageConfig(this.growth.treeStage + 1).minPoints
+  }
+
+  private getProgressValue(): number {
+    return this.growth.totalPoints - TreeStageInfo.getStageConfig(this.growth.treeStage).minPoints
+  }
+
+  private getProgressTotal(): number {
+    return TreeStageInfo.getStageConfig(this.growth.treeStage + 1).minPoints -
+      TreeStageInfo.getStageConfig(this.growth.treeStage).minPoints
+  }
+
   build() {
     Scroll() {
       Column() {
@@ -119,23 +136,20 @@ export struct GrowthTab {
           // 成长进度条
           if (this.growth.treeStage < 5) {
             Column() {
-              let nextStage = TreeStageInfo.getStageConfig(this.growth.treeStage + 1)
               Row() {
-                Text(`距离「${nextStage.name}」`)
+                Text(`距离「${this.getNextStageName()}」`)
                   .fontSize(12)
                   .fontColor($r('app.color.text_secondary'))
                 Blank()
-                Text(`${this.growth.totalPoints}/${nextStage.minPoints}`)
+                Text(`${this.growth.totalPoints}/${this.getNextStageMinPoints()}`)
                   .fontSize(12)
                   .fontColor($r('app.color.accent_orange'))
               }
               .width('100%')
 
               Progress({
-                value: this.growth.totalPoints -
-                TreeStageInfo.getStageConfig(this.growth.treeStage).minPoints,
-                total: TreeStageInfo.getStageConfig(this.growth.treeStage + 1).minPoints -
-                TreeStageInfo.getStageConfig(this.growth.treeStage).minPoints,
+                value: this.getProgressValue(),
+                total: this.getProgressTotal(),
                 type: ProgressType.Linear
               })
                 .width('100%')

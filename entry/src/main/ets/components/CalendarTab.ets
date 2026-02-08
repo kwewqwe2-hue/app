@@ -207,8 +207,7 @@ export struct CalendarTab {
             })
 
             // 日期格子
-            ForEach(Array.from({ length: this.getDaysInMonth() }), (_: undefined, index: number) => {
-              let day = (index !== undefined ? index : 0) + 1
+            ForEach(this.getDaysList(), (day: number) => {
               Column() {
                 Stack() {
                   // 背景色标记
@@ -237,12 +236,7 @@ export struct CalendarTab {
               .justifyContent(FlexAlign.Center)
               .alignItems(HorizontalAlign.Center)
               .onClick(() => {
-                let dateStr = `${this.currentYear}-${this.currentMonth.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
-                this.selectedDate = dateStr
-                router.pushUrl({
-                  url: 'pages/DayDetailPage',
-                  params: { date: dateStr }
-                })
+                this.onDayClick(day)
               })
             })
           }
@@ -280,9 +274,6 @@ export struct CalendarTab {
             .layoutWeight(1)
 
             Column() {
-              let activeDays = 0
-              let monthPrefix = `${this.currentYear}-${this.currentMonth.toString().padStart(2, '0')}`
-              // 计算活跃天数
               Text(`${this.getMonthActiveDays()}天`)
                 .fontSize(20)
                 .fontWeight(FontWeight.Bold)
@@ -343,6 +334,26 @@ export struct CalendarTab {
     .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.Spring)
+  }
+
+  // 生成日期数组 [1, 2, 3, ..., 28/30/31]
+  private getDaysList(): number[] {
+    let days: number[] = []
+    let total = this.getDaysInMonth()
+    for (let i = 1; i <= total; i++) {
+      days.push(i)
+    }
+    return days
+  }
+
+  // 点击日期跳转
+  private onDayClick(day: number): void {
+    let dateStr = `${this.currentYear}-${this.currentMonth.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+    this.selectedDate = dateStr
+    router.pushUrl({
+      url: 'pages/DayDetailPage',
+      params: { date: dateStr }
+    })
   }
 
   private getMonthActiveDays(): number {

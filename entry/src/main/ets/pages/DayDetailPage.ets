@@ -77,15 +77,11 @@ struct DayDetailPage {
   }
 
   // 格式化时间为 HH:MM
-  @Builder
-  buildTimeText(timestamp: number) {
+  private formatTime(timestamp: number): string {
     let d = new Date(timestamp)
     let h = d.getHours().toString().padStart(2, '0')
     let m = d.getMinutes().toString().padStart(2, '0')
-    Text(`${h}:${m}`)
-      .fontSize(13)
-      .fontColor($r('app.color.text_secondary'))
-      .fontWeight(FontWeight.Medium)
+    return `${h}:${m}`
   }
 
   build() {
@@ -231,11 +227,17 @@ struct DayDetailPage {
                     .width('100%')
 
                     Row() {
-                      this.buildTimeText(session.startTime)
+                      Text(this.formatTime(session.startTime))
+                        .fontSize(13)
+                        .fontColor($r('app.color.text_secondary'))
+                        .fontWeight(FontWeight.Medium)
                       Text(' - ')
                         .fontSize(13)
                         .fontColor($r('app.color.text_hint'))
-                      this.buildTimeText(session.endTime)
+                      Text(this.formatTime(session.endTime))
+                        .fontSize(13)
+                        .fontColor($r('app.color.text_secondary'))
+                        .fontWeight(FontWeight.Medium)
                       Blank()
                       Text(`${session.duration}分钟`)
                         .fontSize(13)
