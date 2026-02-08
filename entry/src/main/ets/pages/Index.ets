@@ -7,6 +7,7 @@ import { PlansTab } from '../components/PlansTab'
 import { CalendarTab } from '../components/CalendarTab'
 import { NotebookTab } from '../components/NotebookTab'
 import { GrowthTab } from '../components/GrowthTab'
+import { SettingsTab } from '../components/SettingsTab'
 import curves from '@ohos.curves'
 
 @Entry
@@ -21,11 +22,12 @@ struct Index {
 
   // Tab 项配置
   private tabItems: TabItemInfo[] = [
-    { title: '专注', icon: '⏱', activeIcon: '⏱' },
-    { title: '计划', icon: '📋', activeIcon: '📋' },
-    { title: '日历', icon: '📅', activeIcon: '📅' },
-    { title: '笔记', icon: '📝', activeIcon: '📝' },
-    { title: '成长', icon: '🌳', activeIcon: '🌳' }
+    { title: '专注', icon: '⏱' },
+    { title: '计划', icon: '📋' },
+    { title: '日历', icon: '📅' },
+    { title: '笔记', icon: '📝' },
+    { title: '成长', icon: '🌳' },
+    { title: '设置', icon: '⚙' }
   ]
 
   aboutToAppear(): void {
@@ -55,10 +57,10 @@ struct Index {
   tabBuilder(index: number) {
     Column() {
       Text(this.tabItems[index].icon)
-        .fontSize(24)
+        .fontSize(22)
         .margin({ bottom: 2 })
       Text(this.tabItems[index].title)
-        .fontSize(10)
+        .fontSize(9)
         .fontWeight(this.currentIndex === index ? FontWeight.Bold : FontWeight.Normal)
         .fontColor(this.currentIndex === index ? $r('app.color.tab_active') : $r('app.color.tab_inactive'))
     }
@@ -100,6 +102,12 @@ struct Index {
           GrowthTab()
         }
         .tabBar(this.tabBuilder(4))
+
+        // Tab 6: 设置
+        TabContent() {
+          SettingsTab()
+        }
+        .tabBar(this.tabBuilder(5))
       }
       .barHeight(56)
       .barMode(BarMode.Fixed)
@@ -119,5 +127,4 @@ struct Index {
 interface TabItemInfo {
   title: string
   icon: string
-  activeIcon: string
 }

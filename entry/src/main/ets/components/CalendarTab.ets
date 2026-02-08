@@ -157,13 +157,14 @@ export struct CalendarTab {
 
         // 月份导航
         Row() {
-          Button('<')
-            .width(36)
-            .height(36)
+          Text('<')
+            .width(32)
+            .height(32)
             .fontSize(18)
-            .backgroundColor($r('app.color.bg_surface'))
             .fontColor($r('app.color.text_primary'))
-            .borderRadius(18)
+            .textAlign(TextAlign.Center)
+            .backgroundColor($r('app.color.bg_surface'))
+            .borderRadius(16)
             .onClick(() => { this.changeMonth(-1) })
 
           Text(`${this.currentYear}年${this.currentMonth}月`)
@@ -173,17 +174,18 @@ export struct CalendarTab {
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
 
-          Button('>')
-            .width(36)
-            .height(36)
+          Text('>')
+            .width(32)
+            .height(32)
             .fontSize(18)
-            .backgroundColor($r('app.color.bg_surface'))
             .fontColor($r('app.color.text_primary'))
-            .borderRadius(18)
+            .textAlign(TextAlign.Center)
+            .backgroundColor($r('app.color.bg_surface'))
+            .borderRadius(16)
             .onClick(() => { this.changeMonth(1) })
         }
         .width('100%')
-        .padding({ left: 20, right: 20, top: 8, bottom: 12 })
+        .padding({ left: 12, right: 12, top: 8, bottom: 12 })
         .scale({ x: this.headerScale, y: this.headerScale })
         .opacity(this.headerOpacity)
 

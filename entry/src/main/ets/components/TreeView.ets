@@ -223,37 +223,76 @@ export struct TreeView {
   @Builder
   buildSeed() {
     Column() {
-      // 光点提示
+      // 希望之光 — 柔和的金色光点
       Circle()
-        .width(6).height(6).fill('#FFD54F')
-        .opacity(this.glowOpacity)
-        .offset({ y: -16 })
-        .shadow({ radius: 8, color: '#FFD54F' })
+        .width(8).height(8)
+        .fill('#FFD54F')
+        .opacity(this.glowOpacity * 0.8)
+        .offset({ y: -8 })
 
-      // 种子
-      Stack() {
+      // 种子主体 — 椭圆形，更像真实种子
+      Stack({ alignContent: Alignment.Center }) {
+        // 种子外壳
         Circle()
-          .width(40)
-          .height(40)
+          .width(44).height(38)
+          .fill('#6D4C41')
+          .scale({ x: this.trunkScale, y: this.trunkScale })
+
+        // 种子内层（深色纹理）
+        Circle()
+          .width(36).height(30)
           .fill('#5D4037')
           .scale({ x: this.trunkScale, y: this.trunkScale })
-          .shadow({ radius: 8, color: '#3E2723', offsetY: 3 })
 
-        // 高光
+        // 种子高光（自然光泽）
         Circle()
-          .width(12)
-          .height(8)
+          .width(16).height(10)
           .fill('#8D6E63')
           .offset({ x: -6, y: -8 })
           .scale({ x: this.trunkScale, y: this.trunkScale })
-          .opacity(0.6)
+          .opacity(0.7)
 
+        // 种子裂缝 — 暗示生命
         Row()
           .width(1.5)
-          .height(22)
-          .backgroundColor('#3E2723')
-          .opacity(0.5)
+          .height(16)
+          .backgroundColor('#4E342E')
+          .opacity(0.6)
           .scale({ y: this.trunkScale })
+          .borderRadius(1)
+
+        // 裂缝中的绿色微光
+        Circle()
+          .width(4).height(4)
+          .fill('#81C784')
+          .offset({ y: -10 })
+          .opacity(this.glowOpacity * 0.7)
+          .scale({ x: this.trunkScale, y: this.trunkScale })
+      }
+      .margin({ bottom: 4 })
+
+      // 土壤丘 — 柔和的弧形
+      Stack({ alignContent: Alignment.Top }) {
+        // 土壤主体
+        Circle()
+          .width(100).height(24)
+          .fill('#795548')
+          .opacity(this.rootOpacity * 0.8)
+
+        // 土壤高光
+        Circle()
+          .width(70).height(14)
+          .fill('#8D6E63')
+          .opacity(this.rootOpacity * 0.5)
+          .offset({ y: 2 })
+
+        // 小土粒装饰
+        Circle().width(5).height(5).fill('#6D4C41')
+          .offset({ x: -35, y: 6 }).opacity(this.rootOpacity * 0.6)
+        Circle().width(4).height(4).fill('#5D4037')
+          .offset({ x: 30, y: 8 }).opacity(this.rootOpacity * 0.5)
+        Circle().width(3).height(3).fill('#6D4C41')
+          .offset({ x: -20, y: 10 }).opacity(this.rootOpacity * 0.4)
       }
     }
     .justifyContent(FlexAlign.End)
