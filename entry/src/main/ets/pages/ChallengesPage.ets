@@ -37,7 +37,7 @@ struct ChallengesPage {
   }
 
   private getAchievementStatus(required: number): string {
-    return this.growth.longestStreak >= required ? '✅ 已解锁' : `🔒 需连续${required}天`
+    return this.growth.longestStreak >= required ? '已解锁' : `需连续${required}天`
   }
 
   build() {
@@ -55,14 +55,14 @@ struct ChallengesPage {
         Column() {
           // 今日进度
           Column() {
-            Text('🔥 今日挑战').fontSize(18).fontWeight(FontWeight.Bold)
+            Text('今日挑战').fontSize(18).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 12 })
             Text(`今日已专注: ${PreferencesUtil.formatDuration(this.todayMinutes)}`)
               .fontSize(16).fontColor($r('app.color.primary_green')).fontWeight(FontWeight.Bold)
             Progress({ value: Math.min(this.todayMinutes, 60), total: 60, type: ProgressType.Linear })
               .width('100%').height(10).color($r('app.color.primary_green'))
               .backgroundColor($r('app.color.progress_track')).borderRadius(5).margin({ top: 12 })
-            Text(this.todayMinutes >= 60 ? '✅ 今日挑战完成！' : `目标: 专注60分钟 (还差${Math.max(0, 60 - Math.round(this.todayMinutes))}分钟)`)
+            Text(this.todayMinutes >= 60 ? '今日挑战完成！' : `目标: 专注60分钟 (还差${Math.max(0, 60 - Math.round(this.todayMinutes))}分钟)`)
               .fontSize(13).fontColor($r('app.color.text_secondary')).margin({ top: 8 })
           }.width('100%').padding(20).margin({ left: 16, right: 16, bottom: 12 })
             .backgroundColor($r('app.color.bg_card')).borderRadius(20)
@@ -70,12 +70,12 @@ struct ChallengesPage {
 
           // 7天连续挑战
           Column() {
-            Text('📅 7天连续挑战').fontSize(18).fontWeight(FontWeight.Bold)
+            Text('7天连续挑战').fontSize(18).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 16 })
             Row() {
               ForEach([1, 2, 3, 4, 5, 6, 7], (day: number) => {
                 Column() {
-                  Text(this.isDayCompleted(day - 1) ? '✅' : (day === this.growth.currentStreak + 1 ? '🔥' : '⬜'))
+                  Text(this.isDayCompleted(day - 1) ? '√' : (day === this.growth.currentStreak + 1 ? '>' : '⬜'))
                     .fontSize(24)
                   Text(`D${day}`).fontSize(11).fontColor($r('app.color.text_hint')).margin({ top: 4 })
                 }.layoutWeight(1)
@@ -89,7 +89,7 @@ struct ChallengesPage {
 
           // 成就列表
           Column() {
-            Text('🏆 成就').fontSize(18).fontWeight(FontWeight.Bold)
+            Text('成就').fontSize(18).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 12 })
 
             ForEach([

@@ -138,7 +138,7 @@ struct KeywordAnalysisPage {
         Column() {
           // 分析概要
           Column() {
-            Text('📊 分析概要')
+            Text('分析概要')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary'))
@@ -201,7 +201,7 @@ struct KeywordAnalysisPage {
 
           // 关键词热度表 - 条形图
           Column() {
-            Text('🔥 关键词热度表')
+            Text('关键词热度表')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary'))
@@ -210,7 +210,7 @@ struct KeywordAnalysisPage {
 
             if (this.keywords.length === 0) {
               Column() {
-                Text('📝')
+                Text('暂无')
                   .fontSize(48)
                   .margin({ bottom: 12 })
                 Text('暂无足够数据进行分析')

@@ -158,7 +158,7 @@ struct BreathingPage {
             .onClick(() => { this.startBreathing() })
 
         } else if (this.phase === '完成') {
-          Text('🎉').fontSize(60).margin({ bottom: 16 })
+          Text('恭喜').fontSize(60).margin({ bottom: 16 })
           Text('呼吸练习完成！').fontSize(24).fontWeight(FontWeight.Bold).fontColor($r('app.color.primary_green'))
           Text(`完成 ${this.cycleCount} 个呼吸循环`)
             .fontSize(14).fontColor($r('app.color.text_secondary')).margin({ top: 8, bottom: 32 })

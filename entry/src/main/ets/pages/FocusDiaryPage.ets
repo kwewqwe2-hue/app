@@ -18,7 +18,7 @@ struct FocusDiaryPage {
   @State bodyScale: number = 0
   @State bodyOpacity: number = 0
 
-  private moods: string[] = ['😊 开心', '😌 平静', '💪 充实', '😫 疲惫', '😤 焦虑', '🤔 一般']
+  private moods: string[] = ['开心', '平静', '充实', '疲惫', '焦虑', '一般']
 
   aboutToAppear(): void {
     setTimeout(() => {
@@ -39,7 +39,7 @@ struct FocusDiaryPage {
     let diary: FocusNote = {
       id: PreferencesUtil.generateId(),
       type: 'longterm',
-      title: `📖 专注日记 ${today}`,
+      title: `专注日记 ${today}`,
       content: `${this.mood !== '' ? '心情: ' + this.mood + '\n\n' : ''}${this.diaryContent}`,
       targetDate: 0,
       status: 'completed',
@@ -66,7 +66,7 @@ struct FocusDiaryPage {
         Column() {
           if (this.saved) {
             Column() {
-              Text('📖').fontSize(60).margin({ bottom: 16 })
+              Text('记').fontSize(60).margin({ bottom: 16 })
               Text('日记已保存！').fontSize(20).fontWeight(FontWeight.Bold).fontColor($r('app.color.primary_green'))
               Text('可以在「笔记 > 长期计划」中查看').fontSize(13).fontColor($r('app.color.text_secondary')).margin({ top: 8 })
               Button('返回').width('50%').height(44).fontSize(16)
@@ -75,7 +75,7 @@ struct FocusDiaryPage {
             }.width('100%').padding({ top: 60 }).alignItems(HorizontalAlign.Center)
           } else {
             // 日期
-            Text(`📅 ${PreferencesUtil.getDateStr(new Date())}`)
+            Text(`${PreferencesUtil.getDateStr(new Date())}`)
               .fontSize(16).fontColor($r('app.color.primary_blue')).fontWeight(FontWeight.Bold)
               .width('100%').padding({ left: 20 }).margin({ bottom: 12 })
 

@@ -113,14 +113,14 @@ struct WhiteNoisePage {
               }
               .margin({ bottom: 16 })
 
-              Text(this.currentSound === 0 ? '🌧 雨声播放中...' : '☕ 咖啡厅音播放中...')
+              Text(this.currentSound === 0 ? '雨声播放中...' : '咖啡厅音播放中...')
                 .fontSize(18).fontColor($r('app.color.text_primary')).fontWeight(FontWeight.Bold)
 
               Text(this.formatTime(this.timerSeconds))
                 .fontSize(40).fontWeight(FontWeight.Bold)
                 .fontColor($r('app.color.primary_blue')).margin({ top: 8 })
             } else {
-              Text('🎵').fontSize(60).margin({ bottom: 8 })
+              Text('').fontSize(24).margin({ bottom: 8 })
               Text('选择一种环境音开始放松')
                 .fontSize(16).fontColor($r('app.color.text_secondary'))
             }
@@ -132,7 +132,7 @@ struct WhiteNoisePage {
           Row() {
             // 雨声
             Column() {
-              Text('🌧').fontSize(40).margin({ bottom: 8 })
+              Text('雨').fontSize(40).margin({ bottom: 8 })
               Text('雨声').fontSize(16).fontWeight(FontWeight.Bold).fontColor($r('app.color.text_primary'))
               Text('静谧雨夜').fontSize(12).fontColor($r('app.color.text_secondary')).margin({ top: 4 })
 
@@ -154,7 +154,7 @@ struct WhiteNoisePage {
 
             // 咖啡厅
             Column() {
-              Text('☕').fontSize(40).margin({ bottom: 8 })
+              Text('咖').fontSize(40).margin({ bottom: 8 })
               Text('咖啡厅').fontSize(16).fontWeight(FontWeight.Bold).fontColor($r('app.color.text_primary'))
               Text('舒适嘈杂').fontSize(12).fontColor($r('app.color.text_secondary')).margin({ top: 4 })
 
@@ -177,7 +177,7 @@ struct WhiteNoisePage {
           // 音量控制
           Column() {
             Row() {
-              Text('🔊 音量').fontSize(14).fontColor($r('app.color.text_secondary'))
+              Text('音量').fontSize(14).fontColor($r('app.color.text_secondary'))
               Blank()
               Text(`${this.volume}%`).fontSize(14).fontColor($r('app.color.text_primary')).fontWeight(FontWeight.Bold)
             }.width('100%').margin({ bottom: 8 })

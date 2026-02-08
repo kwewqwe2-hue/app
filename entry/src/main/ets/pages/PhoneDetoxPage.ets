@@ -81,11 +81,11 @@ struct PhoneDetoxPage {
   }
 
   private getEncouragement(): string {
-    if (this.resultSeconds >= 3600) return '🏆 太厉害了！超过一小时的自控力！'
-    if (this.resultSeconds >= 1800) return '🌟 半小时以上，你的意志力很强！'
-    if (this.resultSeconds >= 600) return '💪 十分钟很棒了，继续加油！'
-    if (this.resultSeconds >= 120) return '👍 不错的开始，下次更久一点！'
-    return '🌱 每一次尝试都是进步！'
+    if (this.resultSeconds >= 3600) return '太厉害了！超过一小时的自控力！'
+    if (this.resultSeconds >= 1800) return '半小时以上，你的意志力很强！'
+    if (this.resultSeconds >= 600) return '十分钟很棒了，继续加油！'
+    if (this.resultSeconds >= 120) return '不错的开始，下次更久一点！'
+    return '每一次尝试都是进步！'
   }
 
   build() {
@@ -106,7 +106,7 @@ struct PhoneDetoxPage {
       Column() {
         if (this.showResult) {
           // ===== 结果页 =====
-          Text('🎉').fontSize(60).margin({ bottom: 16 })
+          Text('恭喜').fontSize(60).margin({ bottom: 16 })
           Text('恭喜你完成戒断！').fontSize(24).fontWeight(FontWeight.Bold)
             .fontColor($r('app.color.primary_green'))
 
@@ -129,7 +129,7 @@ struct PhoneDetoxPage {
 
         } else if (this.isActive) {
           // ===== 计时中 =====
-          Text('📵').fontSize(60).margin({ bottom: 12 })
+          Text('禁').fontSize(60).margin({ bottom: 12 })
 
           Text('保持在这个页面').fontSize(16).fontColor($r('app.color.text_secondary'))
 
@@ -162,7 +162,7 @@ struct PhoneDetoxPage {
 
         } else {
           // ===== 未开始 =====
-          Text('📵').fontSize(70).margin({ bottom: 16 })
+          Text('禁').fontSize(70).margin({ bottom: 16 })
           Text('戒断手机挑战').fontSize(24).fontWeight(FontWeight.Bold)
             .fontColor($r('app.color.text_primary')).margin({ bottom: 8 })
           Text('开始后请保持在此页面\n不要切换到其他应用\n离开即结束计时')

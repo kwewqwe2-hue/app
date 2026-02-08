@@ -136,7 +136,7 @@ struct SettingsPage {
                 .height(80)
                 .fill($r('app.color.primary_green_light'))
 
-              Text('🌿')
+              Text('F')
                 .fontSize(40)
             }
             .margin({ bottom: 16 })
@@ -235,7 +235,7 @@ struct SettingsPage {
 
           // 功能特色
           Column() {
-            Text('✨ 功能特色')
+            Text('功能特色')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary'))
@@ -243,12 +243,12 @@ struct SettingsPage {
               .margin({ bottom: 12 })
 
             Column() {
-              this.buildFeatureItem('⏱', '专注计时', '预设/手动双模式计时，番茄钟工作法')
-              this.buildFeatureItem('📋', '计划管理', '创建项目，设定目标，追踪进度')
-              this.buildFeatureItem('📅', '专注日历', '月历展示专注记录，可视化热力图')
-              this.buildFeatureItem('🌳', '成长系统', '积分激励，生命之树六阶段成长')
-              this.buildFeatureItem('📝', '智能笔记', '长期计划/短期备忘/个人收藏')
-              this.buildFeatureItem('📊', '关键词分析', '自动分析笔记内容，提取关键词热度')
+              this.buildFeatureItem('时', '专注计时', '预设/手动双模式计时，番茄钟工作法')
+              this.buildFeatureItem('划', '计划管理', '创建项目，设定目标，追踪进度')
+              this.buildFeatureItem('历', '专注日历', '月历展示专注记录，可视化热力图')
+              this.buildFeatureItem('树', '成长系统', '积分激励，生命之树六阶段成长')
+              this.buildFeatureItem('录', '智能笔记', '长期计划/短期备忘/个人收藏')
+              this.buildFeatureItem('图', '关键词分析', '自动分析笔记内容，提取关键词热度')
             }
           }
           .width('100%')

@@ -264,7 +264,7 @@ export struct SettingsTab {
               Circle()
                 .width(64).height(64)
                 .fill($r('app.color.primary_green_light'))
-              Text('🌿')
+              Text('F')
                 .fontSize(32)
             }
             .margin({ bottom: 12 })

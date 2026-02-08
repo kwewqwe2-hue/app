@@ -73,7 +73,7 @@ export struct PlansTab {
         Column() {
           if (this.projects.length === 0) {
             Column() {
-              Text('📋')
+              Text('暂无')
                 .fontSize(48)
                 .margin({ bottom: 12 })
               Text('还没有项目')

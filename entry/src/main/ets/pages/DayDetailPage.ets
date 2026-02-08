@@ -114,7 +114,7 @@ struct DayDetailPage {
         Column() {
           // 日汇总卡片
           Column() {
-            Text('📊 日汇总')
+            Text('日汇总')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary'))
@@ -172,7 +172,7 @@ struct DayDetailPage {
 
           // 时间线
           Column() {
-            Text('⏱ 专注时间线')
+            Text('专注时间线')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary'))
@@ -181,7 +181,7 @@ struct DayDetailPage {
 
             if (this.sessions.length === 0) {
               Column() {
-                Text('😴')
+                Text('')
                   .fontSize(48)
                   .margin({ bottom: 12 })
                 Text('这一天还没有专注记录')

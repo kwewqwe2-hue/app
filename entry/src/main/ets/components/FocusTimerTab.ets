@@ -234,7 +234,7 @@ export struct FocusTimerTab {
         if (this.showResult) {
           // ===== 结算面板 =====
           Column() {
-            Text('🎉 专注完成！')
+            Text('专注完成！')
               .fontSize(24)
               .fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.primary_green'))

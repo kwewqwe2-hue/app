@@ -38,7 +38,7 @@ struct FocusRatingPage {
     let ratingNote: FocusNote = {
       id: PreferencesUtil.generateId(),
       type: 'shortterm',
-      title: `专注评分: ${'★'.repeat(this.rating)}${'☆'.repeat(5 - this.rating)}`,
+      title: `专注评分: ${'星'.repeat(this.rating)}${'☆'.repeat(5 - this.rating)}`,
       content: `评分: ${this.rating}/5\n${this.interruptReason !== '' ? '中断原因: ' + this.interruptReason + '\n' : ''}${this.notes !== '' ? '备注: ' + this.notes : ''}`,
       targetDate: 0,
       status: 'completed',
@@ -65,7 +65,7 @@ struct FocusRatingPage {
         Column() {
           if (this.saved) {
             Column() {
-              Text('✅').fontSize(60).margin({ bottom: 16 })
+              Text('完成').fontSize(60).margin({ bottom: 16 })
               Text('评分已保存！').fontSize(20).fontWeight(FontWeight.Bold).fontColor($r('app.color.primary_green'))
               Button('返回').width('50%').height(44).fontSize(16)
                 .fontColor(Color.White).backgroundColor($r('app.color.primary_green')).borderRadius(22)
@@ -78,7 +78,7 @@ struct FocusRatingPage {
                 .fontColor($r('app.color.text_primary')).margin({ bottom: 20 })
               Row() {
                 ForEach([1, 2, 3, 4, 5], (star: number) => {
-                  Text(star <= this.rating ? '★' : '☆')
+                  Text(star <= this.rating ? '星' : '☆')
                     .fontSize(44).fontColor(star <= this.rating ? '#FFB300' : $r('app.color.text_hint'))
                     .margin({ left: 6, right: 6 })
                     .onClick(() => { this.rating = star })

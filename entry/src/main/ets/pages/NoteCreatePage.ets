@@ -304,7 +304,7 @@ struct NoteCreatePage {
         Column() {
           // 类型选择标签
           Row() {
-            Text('📋 长期计划')
+            Text('长期计划')
               .fontSize(13)
               .fontColor(this.noteType === 'longterm' ? $r('app.color.primary_green') : $r('app.color.text_hint'))
               .fontWeight(this.noteType === 'longterm' ? FontWeight.Bold : FontWeight.Normal)
@@ -314,7 +314,7 @@ struct NoteCreatePage {
               .onClick(() => { this.noteType = 'longterm' })
               .margin({ right: 8 })
 
-            Text('⚡ 短期备忘')
+            Text('短期备忘')
               .fontSize(13)
               .fontColor(this.noteType === 'shortterm' ? $r('app.color.primary_blue') : $r('app.color.text_hint'))
               .fontWeight(this.noteType === 'shortterm' ? FontWeight.Bold : FontWeight.Normal)
@@ -324,7 +324,7 @@ struct NoteCreatePage {
               .onClick(() => { this.noteType = 'shortterm' })
               .margin({ right: 8 })
 
-            Text('⭐ 个人收藏')
+            Text('个人收藏')
               .fontSize(13)
               .fontColor(this.noteType === 'favorite' ? $r('app.color.accent_orange') : $r('app.color.text_hint'))
               .fontWeight(this.noteType === 'favorite' ? FontWeight.Bold : FontWeight.Normal)

@@ -19,15 +19,7 @@ struct Index {
   @State @Watch('onRefreshChange') refreshCounter: number = 0
   @Provide('refreshCounter') refreshProvide: number = 0
 
-  // Tab 项配置（原顺序）
-  private tabItems: TabItemInfo[] = [
-    { title: '专注', icon: '⏱' },
-    { title: '计划', icon: '📋' },
-    { title: '日历', icon: '📅' },
-    { title: '记录', icon: '📝' },
-    { title: '成长', icon: '🌱' },
-    { title: '工具箱', icon: '🧰' }
-  ]
+  private tabTitles: string[] = ['专注', '计划', '日历', '记录', '成长', '工具箱']
 
   aboutToAppear(): void {
     setTimeout(() => {
@@ -50,13 +42,27 @@ struct Index {
     this.refreshProvide = this.refreshCounter
   }
 
+  private getTabIcon(index: number): Resource {
+    let icons: Resource[] = [
+      $r('app.media.tab_focus'),
+      $r('app.media.tab_plan'),
+      $r('app.media.tab_calendar'),
+      $r('app.media.tab_note'),
+      $r('app.media.tab_growth'),
+      $r('app.media.tab_toolbox')
+    ]
+    return icons[index]
+  }
+
   @Builder
   tabBuilder(index: number) {
     Column() {
-      Text(this.tabItems[index].icon)
-        .fontSize(22)
+      Image(this.getTabIcon(index))
+        .width(24)
+        .height(24)
         .margin({ bottom: 2 })
-      Text(this.tabItems[index].title)
+        .objectFit(ImageFit.Contain)
+      Text(this.tabTitles[index])
         .fontSize(9)
         .fontWeight(this.currentIndex === index ? FontWeight.Bold : FontWeight.Normal)
         .fontColor(this.currentIndex === index ? $r('app.color.tab_active') : $r('app.color.tab_inactive'))
@@ -112,9 +118,4 @@ struct Index {
     .height('100%')
     .backgroundColor($r('app.color.bg_page'))
   }
-}
-
-interface TabItemInfo {
-  title: string
-  icon: string
 }

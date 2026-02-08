@@ -73,7 +73,7 @@ export struct ToolboxTab {
   }
 
   private getToolIcon(index: number): string {
-    let icons: string[] = ['🎵', '🫁', '⭐', '📖', '🏆', '📊', '🎯', '📵']
+    let icons: string[] = ['音', '呼', '星', '记', '杯', '图', '标', '禁']
     return icons[index]
   }
 

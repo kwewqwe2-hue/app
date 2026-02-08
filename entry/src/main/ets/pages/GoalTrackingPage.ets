@@ -52,7 +52,7 @@ struct GoalTrackingPage {
 
   private getRemainingText(): string {
     let remaining = Math.max(0, this.weeklyGoalHours * 60 - this.weeklyCompletedMinutes)
-    if (remaining <= 0) return '🎉 本周目标已完成！'
+    if (remaining <= 0) return '本周目标已完成！'
     return `还差 ${PreferencesUtil.formatDuration(remaining)}`
   }
 
@@ -71,7 +71,7 @@ struct GoalTrackingPage {
         Column() {
           // 本周进度
           Column() {
-            Text('🎯 本周目标').fontSize(18).fontWeight(FontWeight.Bold)
+            Text('本周目标').fontSize(18).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 20 })
 
             // 环形进度
@@ -111,7 +111,7 @@ struct GoalTrackingPage {
 
           // 修改目标
           Column() {
-            Text('⚙ 调整目标').fontSize(16).fontWeight(FontWeight.Bold)
+            Text('调整目标').fontSize(16).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 12 })
             Row() {
               Text('每周目标时长:').fontSize(14).fontColor($r('app.color.text_secondary'))

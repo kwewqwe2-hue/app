@@ -105,7 +105,7 @@ export struct GrowthTab {
             .fontWeight(FontWeight.Bold)
             .fontColor($r('app.color.text_primary'))
           Blank()
-          Button('⚙')
+          Button('设置')
             .width(36)
             .height(36)
             .fontSize(18)

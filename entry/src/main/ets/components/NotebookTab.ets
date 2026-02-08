@@ -192,7 +192,7 @@ export struct NotebookTab {
         Column() {
           if (this.filteredNotes.length === 0) {
             Column() {
-              Text('📝')
+              Text('暂无')
                 .fontSize(48)
                 .margin({ bottom: 12 })
               Text(`暂无${this.tabNames[this.currentTab]}`)
@@ -241,7 +241,7 @@ export struct NotebookTab {
                 // 个人收藏显示链接
                 if (note.type === 'favorite' && note.url !== '') {
                   Row() {
-                    Text('🔗')
+                    Text('链接')
                       .fontSize(12)
                     Text(note.url)
                       .fontSize(12)

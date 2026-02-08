@@ -101,7 +101,7 @@ struct FocusReportPage {
 
           // 总览
           Column() {
-            Text(`📊 ${this.viewMode === 'week' ? '本周' : '本月'}概览`).fontSize(18).fontWeight(FontWeight.Bold)
+            Text(`${this.viewMode === 'week' ? '本周' : '本月'}概览`).fontSize(18).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 16 })
             Row() {
               Column() {
@@ -125,7 +125,7 @@ struct FocusReportPage {
 
           // 按星期分布柱状图
           Column() {
-            Text('📈 按星期分布').fontSize(18).fontWeight(FontWeight.Bold)
+            Text('按星期分布').fontSize(18).fontWeight(FontWeight.Bold)
               .fontColor($r('app.color.text_primary')).width('100%').margin({ bottom: 16 })
             Row() {
               ForEach([0, 1, 2, 3, 4, 5, 6], (i: number) => {
