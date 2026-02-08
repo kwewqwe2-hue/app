@@ -9,6 +9,7 @@ import { DayRecord } from '../model/DataModels'
 
 @Component
 export struct CalendarTab {
+  @Consume('refreshCounter') @Watch('onRefresh') refreshCounter: number
   @State currentYear: number = new Date().getFullYear()
   @State currentMonth: number = new Date().getMonth() + 1
   @State dayRecords: Map<string, DayRecord> = new Map()
@@ -27,6 +28,10 @@ export struct CalendarTab {
   aboutToAppear(): void {
     this.loadRecords()
     this.playEntranceAnimation()
+  }
+
+  onRefresh(): void {
+    this.loadRecords()
   }
 
   private async loadRecords(): Promise<void> {
@@ -334,6 +339,7 @@ export struct CalendarTab {
     .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.Spring)
+    .align(Alignment.Top)
   }
 
   // 生成日期数组 [1, 2, 3, ..., 28/30/31]

@@ -10,6 +10,7 @@ import { TreeView } from './TreeView'
 
 @Component
 export struct GrowthTab {
+  @Consume('refreshCounter') @Watch('onRefresh') refreshCounter: number
   @State growth: UserGrowth = {
     totalPoints: 0,
     treeStage: 0,
@@ -31,6 +32,10 @@ export struct GrowthTab {
   aboutToAppear(): void {
     this.loadData()
     this.playEntranceAnimation()
+  }
+
+  onRefresh(): void {
+    this.loadData()
   }
 
   private async loadData(): Promise<void> {
@@ -293,5 +298,6 @@ export struct GrowthTab {
     .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.Spring)
+    .align(Alignment.Top)
   }
 }

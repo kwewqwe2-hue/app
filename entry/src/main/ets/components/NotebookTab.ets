@@ -12,6 +12,7 @@ export struct NotebookTab {
   @State currentTab: number = 0
   @State notes: FocusNote[] = []
   @State filteredNotes: FocusNote[] = []
+  @Consume('refreshCounter') @Watch('onRefresh') refreshCounter: number
 
   // 动画状态
   @State headerScale: number = 0
@@ -27,6 +28,10 @@ export struct NotebookTab {
   aboutToAppear(): void {
     this.loadNotes()
     this.playEntranceAnimation()
+  }
+
+  onRefresh(): void {
+    this.loadNotes()
   }
 
   private async loadNotes(): Promise<void> {
@@ -274,7 +279,6 @@ export struct NotebookTab {
               .gesture(
                 LongPressGesture()
                   .onAction(() => {
-                    // 长按删除
                     this.deleteNote(note.id)
                   })
               )
@@ -287,6 +291,7 @@ export struct NotebookTab {
       .layoutWeight(1)
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
+      .align(Alignment.Top)
       .scale({ x: this.listScale, y: this.listScale })
       .opacity(this.listOpacity)
     }

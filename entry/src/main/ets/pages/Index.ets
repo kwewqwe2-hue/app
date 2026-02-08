@@ -15,6 +15,9 @@ struct Index {
   @State currentIndex: number = 0
   @State tabBarOpacity: number = 0
   @State tabBarTranslateY: number = 60
+  // 刷新计数器：每次从二级页面返回时 +1，通知子组件刷新数据
+  @State @Watch('onRefreshChange') refreshCounter: number = 0
+  @Provide('refreshCounter') refreshProvide: number = 0
 
   // Tab 项配置
   private tabItems: TabItemInfo[] = [
@@ -36,6 +39,16 @@ struct Index {
         this.tabBarTranslateY = 0
       })
     }, 200)
+  }
+
+  // 从二级页面返回时触发刷新
+  onPageShow(): void {
+    this.refreshCounter++
+    this.refreshProvide = this.refreshCounter
+  }
+
+  onRefreshChange(): void {
+    this.refreshProvide = this.refreshCounter
   }
 
   @Builder

@@ -9,6 +9,8 @@ import { FocusSession, FocusProject } from '../model/DataModels'
 
 @Component
 export struct FocusTimerTab {
+  @Consume('refreshCounter') @Watch('onRefresh') refreshCounter: number
+
   // 计时器状态
   @State isRunning: boolean = false
   @State isPaused: boolean = false
@@ -45,6 +47,10 @@ export struct FocusTimerTab {
   aboutToAppear(): void {
     this.loadData()
     this.playEntranceAnimation()
+  }
+
+  onRefresh(): void {
+    this.loadData()
   }
 
   aboutToDisappear(): void {
@@ -534,5 +540,6 @@ export struct FocusTimerTab {
     .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.Spring)
+    .align(Alignment.Top)
   }
 }

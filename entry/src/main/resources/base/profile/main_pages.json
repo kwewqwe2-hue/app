@@ -4,6 +4,7 @@
     "pages/ProjectDetailPage",
     "pages/DayDetailPage",
     "pages/NoteCreatePage",
+    "pages/PlanCreatePage",
     "pages/KeywordAnalysisPage",
     "pages/SettingsPage"
   ]
