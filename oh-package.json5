@@ -1,0 +1,11 @@
+{
+  "modelVersion": "5.0.0",
+  "name": "focuszone",
+  "version": "1.0.0",
+  "description": "FocusZone - 专注力管理与激励工具",
+  "dependencies": {},
+  "devDependencies": {
+    "@ohos/hvigor-ohos-plugin": "6.0.6",
+    "@ohos/hvigor": "6.0.6"
+  }
+}

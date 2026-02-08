@@ -1,0 +1,10 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/ProjectDetailPage",
+    "pages/DayDetailPage",
+    "pages/NoteCreatePage",
+    "pages/KeywordAnalysisPage",
+    "pages/SettingsPage"
+  ]
+}

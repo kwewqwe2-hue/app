@@ -1,0 +1,116 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#121212"
+    },
+    {
+      "name": "bg_page",
+      "value": "#121212"
+    },
+    {
+      "name": "bg_card",
+      "value": "#1E1E1E"
+    },
+    {
+      "name": "bg_surface",
+      "value": "#2C2C2C"
+    },
+    {
+      "name": "primary_green",
+      "value": "#66BB6A"
+    },
+    {
+      "name": "primary_green_light",
+      "value": "#1B3A1D"
+    },
+    {
+      "name": "primary_blue",
+      "value": "#64B5F6"
+    },
+    {
+      "name": "primary_blue_light",
+      "value": "#0D2137"
+    },
+    {
+      "name": "accent_orange",
+      "value": "#FFB74D"
+    },
+    {
+      "name": "accent_orange_light",
+      "value": "#3E2A0E"
+    },
+    {
+      "name": "text_primary",
+      "value": "#E0E0E0"
+    },
+    {
+      "name": "text_secondary",
+      "value": "#9E9E9E"
+    },
+    {
+      "name": "text_hint",
+      "value": "#616161"
+    },
+    {
+      "name": "divider",
+      "value": "#424242"
+    },
+    {
+      "name": "error_red",
+      "value": "#EF5350"
+    },
+    {
+      "name": "success_green",
+      "value": "#66BB6A"
+    },
+    {
+      "name": "tab_active",
+      "value": "#66BB6A"
+    },
+    {
+      "name": "tab_inactive",
+      "value": "#757575"
+    },
+    {
+      "name": "timer_bg",
+      "value": "#1B3A1D"
+    },
+    {
+      "name": "progress_track",
+      "value": "#424242"
+    },
+    {
+      "name": "calendar_today",
+      "value": "#64B5F6"
+    },
+    {
+      "name": "calendar_has_record",
+      "value": "#1B3A1D"
+    },
+    {
+      "name": "calendar_heavy_record",
+      "value": "#66BB6A"
+    },
+    {
+      "name": "tree_trunk",
+      "value": "#A1887F"
+    },
+    {
+      "name": "tree_leaf",
+      "value": "#81C784"
+    },
+    {
+      "name": "tree_flower",
+      "value": "#F48FB1"
+    },
+    {
+      "name": "tree_fruit",
+      "value": "#FFB74D"
+    },
+    {
+      "name": "shadow_color",
+      "value": "#33000000"
+    }
+  ]
+}
