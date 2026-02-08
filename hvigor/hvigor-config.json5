@@ -1,15 +1,5 @@
 {
   "modelVersion": "5.0.0",
   "dependencies": {
-  },
-  "execution": {
-  },
-  "logging": {
-    "level": "info"
-  },
-  "pluginRepository": {
-    "maven": {
-      "url": "https://repo.huaweicloud.com/repository/maven/"
-    }
   }
 }
